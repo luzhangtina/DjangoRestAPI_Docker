@@ -1,0 +1,6 @@
+Django==3.0
+djangorestframework==3.11.0
+django-filter==2.3.0
+cx_oracle==8.0.0
+djangorestframework-api-key==2.0.0
+djangorestframework-simplejwt==4.4.0

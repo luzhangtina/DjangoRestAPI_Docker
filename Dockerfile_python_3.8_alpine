@@ -1,0 +1,32 @@
+FROM python:3.8-alpine
+
+ENV PYTHONUNBUFFERED 1
+
+RUN apk add --update --no-cache alpine-sdk apache2 bash make
+
+RUN wget https://download.oracle.com/otn_software/linux/instantclient/193000/instantclient-basic-linux.x64-19.3.0.0.0dbru.zip && \
+    unzip instantclient-basic-linux.x64-19.3.0.0.0dbru.zip && \
+    cp -r instantclient_19_3/* /lib && \
+    rm -rf instantclient-basic-linux.x64-19.3.0.0.0dbru.zip && \
+    apk add libaio && \
+    apk add libaio libnsl libc6-compat && \
+    ln -s /lib64/ld-linux-x86-64.so.2 /lib/ld-linux-x86-64.so.2 && \
+    ln -s /usr/lib/libnsl.so.2 /lib/libnsl.so.1 && \
+    ln -s /usr/lib/libc.so /lib/libresolv.so.2
+
+ENV LD_LIBRARY_PATH=/lib
+    
+RUN pip install Django==3.0
+RUN pip install djangorestframework==3.11.0
+RUN pip install django-filter==2.3.0
+RUN pip install cx_oracle==8.0.0
+RUN pip install djangorestframework-api-key==2.0.0
+RUN pip install djangorestframework-simplejwt==4.4.0
+
+RUN mkdir /app
+WORKDIR /app
+COPY ./src/ /app/
+
+RUN adduser -D wms
+USER wms
+

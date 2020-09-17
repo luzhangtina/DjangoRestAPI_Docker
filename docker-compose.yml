@@ -1,0 +1,21 @@
+version: "3"
+
+services: 
+  mic_api:
+    build: .
+    container_name: mic_api
+    ports:
+      - '8080:80'
+    volumes: 
+      - ./src:/var/www/micApiApp
+    command: >
+      sh -c "python /var/www/micApiApp/manage.py runserver 0.0.0.0:80"
+  apache2:
+    build: .
+    container_name: mic_apache2
+    ports:
+      - '8090:80'
+    volumes: 
+      - ./src:/var/www/micApiApp
+    command: >
+      sh -c "/bin/bash /usr/sbin/apache2ctl -D FOREGROUND"

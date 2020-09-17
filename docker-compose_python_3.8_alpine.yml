@@ -1,0 +1,12 @@
+version: "3"
+
+services: 
+  mic_api:
+    build: .
+    container_name: mic_api
+    ports:
+      - '8090:8090'
+    volumes: 
+      - ./src:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8090"
