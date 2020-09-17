@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('MIC_API_SECRET_KEY', '0(w&un#*n$)3_6ld=@cwhawb(ia72w8zl63$l%jn0j*wh0t%&b')
+SECRET_KEY = os.getenv('MIC_API_SECRET_KEY')
 
 # HTTPS Setting
 # Requests over HTTP are redirected to HTTPS
