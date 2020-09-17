@@ -3,7 +3,11 @@
 This project is to build and deploy a REST API with Django and Docker.  
 The base docker image is ubuntu:20.04.  
 Django backend DB is oracle18c.  
-The web server is using apache2.  
+Using apache2 as web server.  
+
+# API
+http:localhost:8090/api/message  
+The authentication methods are API Key and JWT
 
 # Dev Build Image
 ```
