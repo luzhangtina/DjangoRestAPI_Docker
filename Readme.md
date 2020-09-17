@@ -1,5 +1,5 @@
 # Description
-```
+
 This project is to build and deploy a REST API with Django and Docker.
 The base docker image is ubuntu:20.04.
 Django backend DB is oracle18c.
